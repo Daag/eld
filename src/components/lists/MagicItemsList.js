@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { List, Avatar } from 'antd';
 import 'antd/dist/antd.css';
 
+import './MagicItemsList.css';
+
 class MagicItemsList extends Component {
     constructor(props) {
         super(props);
@@ -27,11 +29,13 @@ class MagicItemsList extends Component {
                 dataSource={data}
                 renderItem={item => (
                     <List.Item key={item.id}>
-                        <List.Item.Meta
-                            avatar={<Avatar icon="paper-clip" />}
-                            title={<Link to={`/magicitems/${item.id}`}>{item.name}</Link>}
-                            description={item.category_name}
-                            />
+                        <Link className="eld-list-item-link" to={`/magicitems/${item.id}`}>
+                            <List.Item.Meta
+                                avatar={<Avatar icon="paper-clip" />}
+                                title={item.name}
+                                description={item.category_name}
+                                />
+                        </Link>
                     </List.Item>
                 )}
             />
