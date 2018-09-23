@@ -1,56 +1,44 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { Menu } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
+import { Menu, Icon } from 'antd';
+import 'antd/dist/antd.css';
 
 class Nav extends Component {
-    state = {}
+    state = {
+      current: 'home'
+    }
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    handleItemClick = (e) => {
+      console.log('click ', e);
+      this.setState({ current: e.key });
+    }
   
     render() {
-      const { activeItem } = this.state
-  
+     
       return (
-        <Menu>
-          <Menu.Item
-            name='home'
-            active={activeItem === 'home'}
-            onClick={this.handleItemClick}
-          >
-            <Link to='/'>Home</Link>
+        <Menu
+          onClick={this.handleItemClick}
+          selectedKeys={[this.state.current]}
+          mode="horizontal"
+        >
+          <Menu.Item key='home'>
+            <Link to='/'><Icon type="home" />Home</Link>
           </Menu.Item>
   
-          <Menu.Item 
-            name='gods' 
-            active={activeItem === 'gods'} 
-            onClick={this.handleItemClick}
-          >
-            <Link to='/gods'>Gods</Link>
+          <Menu.Item key='gods'>
+            <Link to='/gods'><Icon type="thunderbolt" />Gods</Link>
           </Menu.Item>
   
-          <Menu.Item
-            name='magicItems'
-            active={activeItem === 'magicItems'}
-            onClick={this.handleItemClick}
-          >
-            <Link to='/magicitems'>Magic Items</Link>
+          <Menu.Item key='magicItems'>
+            <Link to='/magicitems'><Icon type="key" />Magic Items</Link>
           </Menu.Item>
 
-          <Menu.Item
-            name='places'
-            active={activeItem === 'places'}
-            onClick={this.handleItemClick}
-          >
-            <Link to='/places'>Places</Link>
+          <Menu.Item key='places'>
+            <Link to='/places'><Icon type="appstore" />Places</Link>
           </Menu.Item>
 
-          <Menu.Item
-            name='races'
-            active={activeItem === 'races'}
-            onClick={this.handleItemClick}
-          >
-            <Link to='/races'>Races</Link>
+          <Menu.Item key='races'>
+            <Link to='/races'><Icon type="team" />Races</Link>
           </Menu.Item>
         </Menu>
       )
