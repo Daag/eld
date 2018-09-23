@@ -25,7 +25,7 @@ class MagicItemsDetails extends Component {
             <div>
                 Magic Item ID = {this.state.magicItemId}
                 {data.map((item) => 
-                    <h1>{item.name}</h1>
+                    <h1 key={item.id}>{item.name}</h1>
                 )}
             </div>
         );
