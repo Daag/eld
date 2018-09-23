@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { List, Avatar, Divider } from 'antd';
+import { List, Avatar } from 'antd';
 import 'antd/dist/antd.css';
 
 import './MagicItemsList.css';
